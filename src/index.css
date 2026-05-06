@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 220 13% 9%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 13% 9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 13% 9%;
+    --primary: 220 13% 9%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 220 13% 9%;
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+    --accent: 217 91% 60%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 217 91% 60%;
+    --radius: 0.5rem;
+
+    --hairline: 220 13% 91%;
+    --surface: 0 0% 100%;
+    --surface-elevated: 220 14% 98%;
+  }
+
+  .dark {
+    --background: 220 13% 6%;
+    --foreground: 220 14% 96%;
+    --card: 220 13% 8%;
+    --card-foreground: 220 14% 96%;
+    --popover: 220 13% 8%;
+    --popover-foreground: 220 14% 96%;
+    --primary: 220 14% 96%;
+    --primary-foreground: 220 13% 9%;
+    --secondary: 220 13% 12%;
+    --secondary-foreground: 220 14% 96%;
+    --muted: 220 13% 11%;
+    --muted-foreground: 220 9% 60%;
+    --accent: 217 91% 60%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 220 14% 96%;
+    --border: 220 13% 14%;
+    --input: 220 13% 14%;
+    --ring: 217 91% 60%;
+
+    --hairline: 220 13% 14%;
+    --surface: 220 13% 8%;
+    --surface-elevated: 220 13% 10%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "ss01", "cv11";
+  }
+
+  ::selection {
+    @apply bg-foreground text-background;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .grain {
+    background-image: radial-gradient(hsl(var(--foreground) / 0.04) 1px, transparent 1px);
+    background-size: 3px 3px;
+  }
+
+  .hero-glow {
+    background: radial-gradient(ellipse 80% 50% at 50% 0%, hsl(217 91% 60% / 0.12), transparent 70%);
+  }
+
+  .hairline {
+    border-color: hsl(var(--hairline));
+  }
+
+  .reveal {
+    animation: reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .reveal-delay-1 { animation-delay: 0.1s; }
+  .reveal-delay-2 { animation-delay: 0.2s; }
+  .reveal-delay-3 { animation-delay: 0.3s; }
+  .reveal-delay-4 { animation-delay: 0.4s; }
+
+  @keyframes reveal {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .link-underline {
+    @apply relative inline-block after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-px after:-bottom-0.5 after:left-0 after:bg-current after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left;
+  }
+}
